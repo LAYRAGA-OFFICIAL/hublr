@@ -1,0 +1,19 @@
+{
+    "name": "HUBLR — LAYRAGA Hub",
+    "short_name": "HUBLR",
+    "description": "Powerful startpage by LAYRAGA OFFICIAL. Search, bookmark, tools, all in one hub.",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#0f0f1e",
+    "theme_color": "#6366f1",
+    "orientation": "portrait-primary",
+    "lang": "id",
+    "icons": [
+        {
+            "src": "src/assets/icons/favicon.svg",
+            "sizes": "any",
+            "type": "image/svg+xml",
+            "purpose": "any"
+        }
+    ]
+}

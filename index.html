@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="HUBLR — Powerful startpage by LAYRAGA OFFICIAL. Search, bookmark, tools, all in one hub.">
+    <meta name="theme-color" content="#6366f1">
+    <title>HUBLR — LAYRAGA Hub</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/svg+xml" href="src/assets/icons/favicon.svg">
+    <link rel="stylesheet" href="src/css/main.css">
+</head>
+<body>
+    <div id="wallpaper" class="wallpaper"></div>
+    <div class="overlay"></div>
+
+    <main class="container">
+        <header class="topbar">
+            <div class="brand">
+                <span class="brand-icon">🌀</span>
+                <span class="brand-name">HUBLR</span>
+            </div>
+            <div class="topbar-actions">
+                <button id="langToggle" class="icon-btn" title="Ganti Bahasa">
+                    <span id="langLabel">ID</span>
+                </button>
+                <button id="themeToggle" class="icon-btn" title="Ganti Tema">
+                    <span id="themeIcon">🌙</span>
+                </button>
+                <button id="settingsBtn" class="icon-btn" title="Pengaturan">
+                    <span>⚙️</span>
+                </button>
+            </div>
+        </header>
+
+        <section class="clock-section">
+            <div id="clock" class="clock">00:00</div>
+            <div id="date" class="date">Memuat...</div>
+            <div id="greeting" class="greeting"></div>
+        </section>
+
+        <section class="search-section">
+            <div class="search-wrapper">
+                <select id="engineSelect" class="engine-select"></select>
+                <input
+                    type="text"
+                    id="searchInput"
+                    class="search-input"
+                    placeholder="Ketik untuk mencari... (Ctrl+K)"
+                    autocomplete="off"
+                    autofocus
+                >
+                <button id="searchBtn" class="search-btn" title="Cari">🔍</button>
+            </div>
+            <div id="calcResult" class="calc-result"></div>
+        </section>
+
+        <section class="bookmarks-section">
+            <div class="bookmarks-header">
+                <h2 id="bookmarksTitle">Bookmark</h2>
+                <button id="addBookmarkBtn" class="icon-btn small" title="Tambah Bookmark">➕</button>
+            </div>
+            <div id="bookmarksGrid" class="bookmarks-grid"></div>
+        </section>
+
+        <footer class="footer">
+            <span id="footerText">HUBLR v0.1.0 — oleh LAYRAGA OFFICIAL</span>
+        </footer>
+    </main>
+
+    <div id="bookmarkModal" class="modal hidden">
+        <div class="modal-content">
+            <h3 id="modalTitle">Tambah Bookmark</h3>
+            <input type="text" id="bmName" placeholder="Nama">
+            <input type="url" id="bmUrl" placeholder="URL">
+            <div class="modal-actions">
+                <button id="bmCancel" class="btn btn-secondary">Batal</button>
+                <button id="bmSave" class="btn btn-primary">Simpan</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="settingsModal" class="modal hidden">
+        <div class="modal-content">
+            <h3 id="settingsTitle">Pengaturan</h3>
+            <div class="setting-item">
+                <label id="lblWallpaper">Wallpaper dari Unsplash</label>
+                <input type="checkbox" id="wallpaperToggle" checked>
+            </div>
+            <div class="setting-item">
+                <label id="lblAnim">Animasi</label>
+                <input type="checkbox" id="animationToggle" checked>
+            </div>
+            <div class="setting-item">
+                <label id="lblClock">Format Jam</label>
+                <select id="clockFormat">
+                    <option value="24">24 Jam</option>
+                    <option value="12">12 Jam (AM/PM)</option>
+                </select>
+            </div>
+            <div class="modal-actions">
+                <button id="settingsClose" class="btn btn-primary">Tutup</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Core -->
+    <script src="src/js/config.js"></script>
+    <script src="src/js/core/storage.js"></script>
+    <script src="src/js/core/state.js"></script>
+    <script src="src/js/core/i18n.js"></script>
+
+    <!-- Utils -->
+    <script src="src/js/utils/dom.js"></script>
+    <script src="src/js/utils/helpers.js"></script>
+
+    <!-- Modules -->
+    <script src="src/js/modules/clock.js"></script>
+    <script src="src/js/modules/theme.js"></script>
+    <script src="src/js/modules/wallpaper.js"></script>
+    <script src="src/js/modules/calculator.js"></script>
+    <script src="src/js/modules/search.js"></script>
+    <script src="src/js/modules/bookmarks.js"></script>
+    <script src="src/js/modules/settings.js"></script>
+
+    <!-- App Entry -->
+    <script src="src/js/app.js"></script>
+</body>
+</html>
