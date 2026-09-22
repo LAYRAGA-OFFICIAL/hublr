@@ -1,6 +1,12 @@
-# 🌀 HUBLR
+<p align="center">
+  <img src="src/assets/icons/logo.png" alt="HUBLR" width="150">
+</p>
 
-> **LAYRAGA Hub** — Powerful startpage by [LAYRAGA OFFICIAL](https://github.com/LAYRAGA-OFFICIAL).
+<h1 align="center">HUBLR</h1>
+
+<p align="center">
+  <strong>LAYRAGA Hub</strong> — Powerful startpage by LAYRAGA OFFICIAL.
+</p>
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.1.0-blue.svg)](https://github.com/LAYRAGA-OFFICIAL/hublr/releases)

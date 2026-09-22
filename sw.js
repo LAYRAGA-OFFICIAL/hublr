@@ -23,7 +23,7 @@ const ASSETS = [
     './src/js/modules/search.js',
     './src/js/modules/bookmarks.js',
     './src/js/modules/settings.js',
-    './src/assets/icons/favicon.svg'
+    './src/assets/icons/logo.png',
 ];
 
 self.addEventListener('install', (e) => {
