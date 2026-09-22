@@ -22,11 +22,34 @@
 
 ## 🚀 Cara Pakai
 
-1. Clone repo: `git clone https://github.com/LAYRAGA-OFFICIAL/hublr.git`
-2. Buka `index.html` di browser
-3. Selesai!
+### Cara 1: Langsung Online (Paling Mudah)
 
-**Demo live**: https://layraga-official.github.io/hublr/
+Buka: **https://layraga-official.github.io/hublr/**
+
+Selesai! Tidak perlu install apa pun.
+
+### Cara 2: Jalankan di Komputer
+
+```bash
+git clone https://github.com/LAYRAGA-OFFICIAL/hublr.git
+cd hublr
+```
+
+Jalankan server lokal (pilih salah satu):
+
+```bash
+# Python
+python -m http.server 8000
+
+# Node.js
+npx serve .
+```
+
+Atau pakai **VS Code + Live Server** (paling ramah pemula).
+
+Buka: `http://localhost:8000`
+
+> ⚠️ **Jangan** klik `index.html` langsung — tidak akan jalan.
 
 ## 📚 Dokumentasi
 
