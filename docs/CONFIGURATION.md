@@ -1,28 +1,101 @@
-# Konfigurasi HUBLR
+# ⚙️ Konfigurasi HUBLR
 
-Edit `src/js/config.js` untuk mengubah:
-
-- **Brand**: nama, versi, author
-- **Engines**: tambah search engine
-- **defaultBookmarks**: bookmark awal
-- **wallpaper**: sumber & interval
-- **settings**: default tema, bahasa, dll
-
-## Contoh: Tambah Search Engine
-
-```javascript
-{ id: 'perplexity', name: 'Perplexity', icon: '🧠', url: 'https://perplexity.ai/search?q=%s' }
+Semua pengaturan ada di file: `src/js/config.js`
 
 ---
 
-## 📄 FILE 44: `docs/KEYBOARD_SHORTCUTS.md`
+## 🏷️ Brand
 
-```markdown
-# Keyboard Shortcuts
+```javascript
+brand: {
+    name: 'HUBLR',
+    fullName: 'LAYRAGA Hub',
+    version: '0.1.0',
+    author: 'LAYRAGA OFFICIAL',
+    repo: 'https://github.com/LAYRAGA-OFFICIAL/hublr'
+}
+```
 
-| Shortcut | Fungsi |
-|----------|--------|
-| `Ctrl+K` / `Cmd+K` | Fokus ke search |
-| `/` | Fokus ke search |
-| `Enter` | Cari |
-| `Esc` | Bersihkan search |
+---
+
+## 🔍 Mesin Pencari
+
+```javascript
+engines: [
+    { id: 'google', name: 'Google', icon: '🔍', url: 'https://www.google.com/search?q=%s' },
+    { id: 'youtube', name: 'YouTube', icon: '▶️', url: 'https://www.youtube.com/results?search_query=%s' },
+    // tambah di sini...
+]
+```
+
+**Menambah mesin baru:**
+```javascript
+{ id: 'ecosia', name: 'Ecosia', icon: '🌳', url: 'https://www.ecosia.org/search?q=%s' }
+```
+
+`%s` = kata kunci yang diketik user.
+
+---
+
+## 🔖 Bookmark Default
+
+```javascript
+defaultBookmarks: [
+    { name: 'GitHub', url: 'https://github.com', icon: '🐙' },
+    { name: 'YouTube', url: 'https://youtube.com', icon: '▶️' },
+    // tambah di sini...
+]
+```
+
+> ⚠️ Hanya berlaku untuk pengguna **baru**.
+
+---
+
+## 🖼️ Wallpaper
+
+```javascript
+wallpaper: {
+    enabled: true,
+    source: 'https://source.unsplash.com/1920x1080/?nature',
+    refreshInterval: 3600000  // 1 jam
+}
+```
+
+**Contoh source:**
+- `?nature` → alam
+- `?city,night` → kota malam
+- `?abstract` → abstrak
+
+---
+
+## ⚙️ Settings Default
+
+```javascript
+settings: {
+    defaultTheme: 'dark',      // 'dark' | 'light' | 'auto'
+    defaultLanguage: 'id',     // 'id' | 'en'
+    clockFormat: '24',         // '24' | '12'
+    animations: true
+}
+```
+
+---
+
+## 💾 Simpan & Refresh
+
+1. Tekan `Ctrl + S` di editor
+2. Refresh browser (`F5` atau `Ctrl + R`)
+3. Kalau tidak berubah, hard refresh (`Ctrl + Shift + R`)
+
+---
+
+## 🔄 Reset Pengaturan
+
+Buka Console browser (`F12`):
+```javascript
+localStorage.clear(); location.reload();
+```
+
+---
+
+**Dibuat di Indonesia 🇮🇩 oleh LAYRAGA OFFICIAL**
