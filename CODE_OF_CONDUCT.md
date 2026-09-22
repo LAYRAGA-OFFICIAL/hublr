@@ -19,7 +19,11 @@ Perilaku tidak diterima:
 
 ## Penegakan
 
-Laporkan pelanggaran ke maintainer. Semua keluhan akan ditinjau.
+Laporkan pelanggaran ke maintainer melalui:
+- [GitHub Issues](https://github.com/LAYRAGA-OFFICIAL/hublr/issues)
+- [GitHub Discussions](https://github.com/LAYRAGA-OFFICIAL/hublr/discussions)
+
+Semua keluhan akan ditinjau dalam 48 jam.
 
 ## Atribusi
 
