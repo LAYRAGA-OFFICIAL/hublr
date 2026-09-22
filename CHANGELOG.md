@@ -19,6 +19,10 @@ Versioning: [Semantic Versioning](https://semver.org/)
 - 📱 PWA ready
 - 📄 Dokumentasi lengkap
 
+---
+
+## [Unreleased] — Rencana Berikutnya
+
 ### Planned v0.2.0
 - Autosuggestions
 - Widget cuaca
