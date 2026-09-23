@@ -3,46 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="HUBLR — Powerful startpage by LAYRAGA OFFICIAL. Search, bookmark, tools, all in one hub.">
+    <meta name="description" content="HUBLR — Powerful startpage by LAYRAGA OFFICIAL. Search, bookmark, notes, to-do, weather, all in one hub.">
     <meta name="theme-color" content="#6366f1">
     <title>HUBLR — LAYRAGA Hub</title>
+
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" href="src/assets/icons/logo.png">
     <link rel="apple-touch-icon" href="src/assets/icons/logo.png">
     <link rel="stylesheet" href="src/css/main.css">
 </head>
 <body>
+    <!-- Background -->
     <div id="wallpaper" class="wallpaper"></div>
     <div class="overlay"></div>
 
+    <!-- Main Container -->
     <main class="container">
+
+        <!-- ========== TOPBAR ========== -->
         <header class="topbar">
             <div class="brand">
                 <img src="src/assets/icons/logo.png" alt="HUBLR" class="brand-logo">
                 <span class="brand-name">HUBLR</span>
             </div>
             <div class="topbar-actions">
-                <button id="langToggle" class="icon-btn" title="Ganti Bahasa">
+                <button id="langToggle" class="icon-btn" title="Ganti Bahasa / Switch Language">
                     <span id="langLabel">ID</span>
                 </button>
-                <button id="themeToggle" class="icon-btn" title="Ganti Tema">
+                <button id="themeToggle" class="icon-btn" title="Ganti Tema / Toggle Theme">
                     <span id="themeIcon">🌙</span>
                 </button>
-                <button id="settingsBtn" class="icon-btn" title="Pengaturan">
+                <button id="settingsBtn" class="icon-btn" title="Pengaturan / Settings">
                     <span>⚙️</span>
                 </button>
             </div>
         </header>
 
+        <!-- ========== CLOCK ========== -->
         <section class="clock-section">
             <div id="clock" class="clock">00:00</div>
             <div id="date" class="date">Memuat...</div>
             <div id="greeting" class="greeting"></div>
         </section>
 
+        <!-- ========== SEARCH ========== -->
         <section class="search-section">
             <div class="search-wrapper">
-                <select id="engineSelect" class="engine-select"></select>
+                <select id="engineSelect" class="engine-select" title="Mesin Pencari"></select>
                 <input
                     type="text"
                     id="searchInput"
@@ -53,9 +60,11 @@
                 >
                 <button id="searchBtn" class="search-btn" title="Cari">🔍</button>
             </div>
+            <div id="suggestions" class="suggestions"></div>
             <div id="calcResult" class="calc-result"></div>
         </section>
 
+        <!-- ========== BOOKMARKS ========== -->
         <section class="bookmarks-section">
             <div class="bookmarks-header">
                 <h2 id="bookmarksTitle">Bookmark</h2>
@@ -64,11 +73,66 @@
             <div id="bookmarksGrid" class="bookmarks-grid"></div>
         </section>
 
+        <!-- ========== DASHBOARD (v0.2.0) ========== -->
+        <section id="dashboard" class="dashboard hidden">
+
+            <!-- Notes -->
+            <div class="dash-card">
+                <div class="dash-header">
+                    <span class="dash-title">📝 <span id="notesTitle">Catatan</span></span>
+                    <button id="addNoteBtn" class="dash-action" title="Tambah">+</button>
+                </div>
+                <div id="notesGrid" class="dash-content notes-grid"></div>
+            </div>
+
+            <!-- To-do -->
+            <div class="dash-card">
+                <div class="dash-header">
+                    <span class="dash-title">✅ <span id="todoTitle">Tugas</span></span>
+                </div>
+                <input type="text" id="todoInput" class="todo-input" placeholder="Tambah tugas..." />
+                <div id="todoList" class="dash-content"></div>
+            </div>
+
+            <!-- Weather -->
+            <div class="dash-card">
+                <div class="dash-header">
+                    <span class="dash-title">🌤️ <span id="weatherTitle">Cuaca</span></span>
+                    <button id="weatherRefresh" class="dash-action" title="Refresh">↻</button>
+                </div>
+                <div id="weatherContent" class="dash-content"></div>
+            </div>
+
+            <!-- Backup -->
+            <div class="dash-card">
+                <div class="dash-header">
+                    <span class="dash-title">📥 <span id="backupTitle">Backup</span></span>
+                </div>
+                <div class="dash-content">
+                    <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 12px;">
+                        <span id="backupDesc">Simpan atau pulihkan data HUBLR Anda.</span>
+                    </p>
+                    <div class="backup-buttons">
+                        <button id="exportBtn" class="backup-btn">📤 Export</button>
+                        <button id="importBtn" class="backup-btn">📥 Import</button>
+                    </div>
+                    <input type="file" id="importFile" accept=".json" style="display: none;">
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ========== FOOTER ========== -->
         <footer class="footer">
-            <span id="footerText">HUBLR v0.1.0 — oleh LAYRAGA OFFICIAL</span>
+            <span id="footerText">HUBLR v0.2.0 — oleh LAYRAGA OFFICIAL</span>
         </footer>
+
     </main>
 
+    <!-- Dashboard Toggle Button -->
+    <button id="dashboardToggle" class="dashboard-toggle-btn" title="Dashboard">📊</button>
+
+    <!-- ========== BOOKMARK MODAL ========== -->
     <div id="bookmarkModal" class="modal hidden">
         <div class="modal-content">
             <h3 id="modalTitle">Tambah Bookmark</h3>
@@ -81,17 +145,21 @@
         </div>
     </div>
 
+    <!-- ========== SETTINGS MODAL ========== -->
     <div id="settingsModal" class="modal hidden">
         <div class="modal-content">
             <h3 id="settingsTitle">Pengaturan</h3>
+
             <div class="setting-item">
                 <label id="lblWallpaper">Wallpaper dari Unsplash</label>
                 <input type="checkbox" id="wallpaperToggle" checked>
             </div>
+
             <div class="setting-item">
                 <label id="lblAnim">Animasi</label>
                 <input type="checkbox" id="animationToggle" checked>
             </div>
+
             <div class="setting-item">
                 <label id="lblClock">Format Jam</label>
                 <select id="clockFormat">
@@ -99,32 +167,44 @@
                     <option value="12">12 Jam (AM/PM)</option>
                 </select>
             </div>
+
             <div class="modal-actions">
                 <button id="settingsClose" class="btn btn-primary">Tutup</button>
             </div>
         </div>
     </div>
 
-    <!-- Core -->
+    <!-- ==================================================== -->
+    <!-- SCRIPTS — URUTAN WAJIB, JANGAN DIACAK!               -->
+    <!-- ==================================================== -->
+
+    <!-- 1. Core (config → storage → state → i18n) -->
     <script src="src/js/config.js"></script>
     <script src="src/js/core/storage.js"></script>
     <script src="src/js/core/state.js"></script>
     <script src="src/js/core/i18n.js"></script>
 
-    <!-- Utils -->
+    <!-- 2. Utils -->
     <script src="src/js/utils/dom.js"></script>
     <script src="src/js/utils/helpers.js"></script>
 
-    <!-- Modules -->
+    <!-- 3. Modules -->
     <script src="src/js/modules/clock.js"></script>
     <script src="src/js/modules/theme.js"></script>
     <script src="src/js/modules/wallpaper.js"></script>
     <script src="src/js/modules/calculator.js"></script>
+    <script src="src/js/modules/autosuggest.js"></script>
     <script src="src/js/modules/search.js"></script>
     <script src="src/js/modules/bookmarks.js"></script>
+    <script src="src/js/modules/notes.js"></script>
+    <script src="src/js/modules/todo.js"></script>
+    <script src="src/js/modules/weather.js"></script>
+    <script src="src/js/modules/backup.js"></script>
+    <script src="src/js/modules/dashboard.js"></script>
     <script src="src/js/modules/settings.js"></script>
 
-    <!-- App Entry -->
+    <!-- 4. App Entry (WAJIB PALING AKHIR) -->
     <script src="src/js/app.js"></script>
+
 </body>
 </html>

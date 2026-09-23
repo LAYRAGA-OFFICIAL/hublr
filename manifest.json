@@ -1,7 +1,7 @@
 {
     "name": "HUBLR — LAYRAGA Hub",
     "short_name": "HUBLR",
-    "description": "Powerful startpage by LAYRAGA OFFICIAL. Search, bookmark, tools, all in one hub.",
+    "description": "Powerful startpage by LAYRAGA OFFICIAL. Search, bookmark, notes, to-do, weather, all in one hub.",
     "start_url": "./index.html",
     "display": "standalone",
     "background_color": "#0f0f1e",
@@ -9,17 +9,17 @@
     "orientation": "portrait-primary",
     "lang": "id",
     "icons": [
-    {
-        "src": "src/assets/icons/logo.png",
-        "sizes": "192x192",
-        "type": "image/png",
-        "purpose": "any"
-    },
-    {
-        "src": "src/assets/icons/logo.png",
-        "sizes": "512x512",
-        "type": "image/png",
-        "purpose": "any maskable"
-    }
-  ]
+        {
+            "src": "src/assets/icons/logo.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "src/assets/icons/logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
+    ]
 }

@@ -6,7 +6,7 @@ const CONFIG = {
     brand: {
         name: 'HUBLR',
         fullName: 'LAYRAGA Hub',
-        version: '0.1.0',
+        version: '0.2.0',
         author: 'LAYRAGA OFFICIAL',
         repo: 'https://github.com/LAYRAGA-OFFICIAL/hublr'
     },
