@@ -1,5 +1,5 @@
 /* ============================================
-   HUBLR - App Entry Point v0.3.2
+   HUBLR - App Entry Point v0.3.0
    ============================================ */
 
 const App = {
@@ -27,7 +27,7 @@ const App = {
             navigator.serviceWorker.register('./sw.js').catch(() => {});
         }
 
-        console.log('%c🌀 HUBLR v0.3.2', 'color:#6366f1;font-size:20px;font-weight:bold;');
+        console.log('%c🌀 HUBLR v0.3.0', 'color:#6366f1;font-size:20px;font-weight:bold;');
         console.log('%cby LAYRAGA OFFICIAL', 'color:#0ea5e9;font-size:12px;');
     },
 
