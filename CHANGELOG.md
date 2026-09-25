@@ -4,7 +4,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/)
 Versioning: [Semantic Versioning](https://semver.org/)
 
 
-## [0.3.0] - 2026-09-24
+## [0.3.0] - 2026-09-25
 
 ### Added
 - 🎨 Wallpaper Manager (upload gambar/video/gradient/solid/URL)
