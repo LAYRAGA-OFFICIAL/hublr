@@ -1,6 +1,5 @@
 /* ============================================
-   HUBLR - Layout
-   Container, topbar, clock, search, bookmarks, footer
+   HUBLR - Layout v0.3.2
    ============================================ */
 
 .container {
@@ -41,14 +40,6 @@
     transform: scale(1.1) rotate(-5deg);
 }
 
-/* Responsif untuk mobile */
-@media (max-width: 640px) {
-    .brand-logo {
-        width: 30px;
-        height: 30px;
-    }
-}
-
 .topbar-actions {
     display: flex;
     gap: 8px;
@@ -80,8 +71,13 @@
     font-weight: 300;
 }
 
+/* ============================================
+   Search Section v0.3.2
+   ============================================ */
+
 .search-section {
     position: relative;
+    width: 100%;
 }
 
 .search-wrapper {
@@ -92,24 +88,37 @@
     border-radius: var(--radius);
     padding: 6px;
     backdrop-filter: blur(20px);
-    transition: all var(--transition);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: var(--shadow);
+    gap: 4px;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    z-index: 2;
 }
 
 .search-wrapper:focus-within {
     border-color: var(--primary);
     box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2), var(--shadow);
+    transform: scale(1.005);
 }
 
 .engine-select {
     background: transparent;
     border: none;
     color: var(--text);
-    font-size: 1.1rem;
-    padding: 12px 8px 12px 16px;
+    font-size: 0.95rem;
+    padding: 10px 6px 10px 12px;
     cursor: pointer;
     outline: none;
     border-radius: var(--radius-sm);
+    max-width: 130px;
+    flex-shrink: 0;
+    transition: background 0.2s ease;
+}
+
+.engine-select:hover {
+    background: rgba(99, 102, 241, 0.1);
 }
 
 .engine-select option {
@@ -117,18 +126,268 @@
     color: white;
 }
 
+.engine-picker-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text);
+    cursor: pointer;
+    padding: 6px 8px;
+    border-radius: var(--radius-sm);
+    font-size: 1.1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    min-width: 44px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    position: relative;
+    overflow: hidden;
+}
+
+.engine-picker-btn::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(99, 102, 241, 0.3), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: inherit;
+}
+
+.engine-picker-btn:hover::before,
+.engine-picker-btn.open::before {
+    opacity: 1;
+}
+
+.engine-picker-btn:hover {
+    background: rgba(99, 102, 241, 0.12);
+}
+
+.engine-picker-btn:active {
+    transform: scale(0.95);
+}
+
+.engine-picker-btn.open {
+    background: var(--primary);
+    color: white;
+}
+
+.engine-picker-icon {
+    font-size: 1.2rem;
+    line-height: 1;
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-block;
+    position: relative;
+    z-index: 1;
+}
+
+.engine-picker-btn:hover .engine-picker-icon {
+    transform: rotate(20deg) scale(1.1);
+}
+
+.engine-picker-btn.open .engine-picker-icon {
+    transform: rotate(360deg) scale(1.1);
+}
+
+.engine-picker-chevron {
+    font-size: 0.7rem;
+    opacity: 0.6;
+    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.engine-picker-btn.open .engine-picker-chevron {
+    transform: rotate(180deg);
+    opacity: 1;
+}
+
 .search-input {
     flex: 1;
+    min-width: 0;
     background: transparent;
     border: none;
     outline: none;
     color: var(--text);
-    font-size: 1.15rem;
-    padding: 16px 12px;
+    font-size: 1rem;
+    padding: 12px 6px;
 }
 
 .search-input::placeholder {
     color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+/* ============================================
+   Engine Dropdown v0.3.2
+   ============================================ */
+
+.engine-dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    background: rgba(20, 20, 35, 0.85);
+    backdrop-filter: blur(30px) saturate(180%);
+    -webkit-backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    padding: 8px;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 50;
+    pointer-events: none;
+}
+
+[data-theme="light"] .engine-dropdown {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.engine-dropdown.active {
+    max-height: 500px;
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+    padding: 12px;
+    overflow-y: auto;
+}
+
+.engine-dropdown-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 4px 10px 4px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.engine-dropdown-title {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.engine-dropdown-close {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 4px 8px;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+    line-height: 1;
+}
+
+.engine-dropdown-close:hover {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+}
+
+.engine-dropdown-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.engine-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    font-size: 0.95rem;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+}
+
+.engine-dropdown-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--primary);
+    transform: scaleY(0);
+    transition: transform 0.3s ease;
+    border-radius: 0 3px 3px 0;
+}
+
+.engine-dropdown-item:hover {
+    background: rgba(99, 102, 241, 0.12);
+    border-color: rgba(99, 102, 241, 0.2);
+    transform: translateX(4px);
+}
+
+.engine-dropdown-item:hover::before {
+    transform: scaleY(1);
+}
+
+.engine-dropdown-item.active {
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.engine-dropdown-item.active::before {
+    transform: scaleY(1);
+    background: white;
+}
+
+.engine-dropdown-icon {
+    font-size: 1.3rem;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.08);
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.engine-dropdown-item:hover .engine-dropdown-icon {
+    transform: scale(1.1) rotate(-5deg);
+    background: rgba(99, 102, 241, 0.2);
+}
+
+.engine-dropdown-item.active .engine-dropdown-icon {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.engine-dropdown-name {
+    flex: 1;
+    font-weight: 500;
+}
+
+.engine-dropdown-check {
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    transform: scale(0.5);
+}
+
+.engine-dropdown-item.active .engine-dropdown-check {
+    opacity: 1;
+    transform: scale(1);
 }
 
 .bookmarks-section {
@@ -161,4 +420,56 @@
     padding: 16px 0;
     font-size: 0.85rem;
     color: var(--text-muted);
+}
+
+.setting-section {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.setting-section:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.setting-section-title {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+    color: var(--primary);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+/* ============================================
+   Responsive v0.3.2
+   ============================================ */
+
+@media (max-width: 640px) {
+    .engine-select { display: none; }
+    .engine-picker-btn { display: flex; }
+    .search-wrapper { padding: 4px; gap: 2px; }
+    .search-input { font-size: 0.95rem; padding: 10px 4px; }
+    .search-input::placeholder { font-size: 0.85rem; }
+    .search-btn { width: 40px; height: 40px; font-size: 1rem; padding: 0; }
+    .voice-btn { padding: 8px; font-size: 1rem; }
+    .engine-picker-btn { min-width: 40px; height: 38px; padding: 4px 6px; }
+    .engine-dropdown { left: 0; right: 0; top: calc(100% + 6px); }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+    .engine-select { max-width: 110px; font-size: 0.9rem; }
+}
+
+@media (max-width: 380px) {
+    .search-input { font-size: 0.9rem; padding: 8px 2px; }
+    .search-input::placeholder { font-size: 0.8rem; }
+    .engine-picker-btn { min-width: 36px; height: 34px; padding: 4px; }
+    .engine-picker-icon { font-size: 1rem; }
+    .search-btn { width: 36px; height: 36px; }
+    .voice-btn { padding: 6px; font-size: 0.9rem; }
+    .brand-logo { width: 30px; height: 30px; }
+    .engine-dropdown-item { padding: 10px 12px; font-size: 0.9rem; }
+    .engine-dropdown-icon { width: 28px; height: 28px; font-size: 1.1rem; }
 }

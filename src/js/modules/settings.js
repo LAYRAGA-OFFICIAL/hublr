@@ -1,5 +1,5 @@
 /* ============================================
-   HUBLR - Settings Module
+   HUBLR - Settings Module v0.3.0
    ============================================ */
 
 const Settings = {
@@ -9,7 +9,7 @@ const Settings = {
 
         on(ELS.wallpaperToggle, 'change', (e) => {
             State.set('wallpaperEnabled', e.target.checked);
-            Wallpaper.apply();
+            WallpaperManager.apply();
         });
 
         on(ELS.animationToggle, 'change', (e) => {
@@ -25,13 +25,19 @@ const Settings = {
             Clock.update();
         });
 
-        // Ganti bahasa — perbaiki: panggil applyLanguage
         on(ELS.langToggle, 'click', () => {
             I18n.toggle();
             App.applyLanguage();
         });
 
-        // Close modal on background click
+        // v0.3.0 — Wallpaper type toggle
+        on($('#wallpaperType'), 'change', (e) => {
+            const type = e.target.value;
+            $$('.wallpaper-option').forEach((el) => el.classList.add('hidden'));
+            const target = $(`#wallpaper-${type}`);
+            if (target) target.classList.remove('hidden');
+        });
+
         $$('.modal').forEach((modal) => {
             on(modal, 'click', (e) => {
                 if (e.target === modal) modal.classList.add('hidden');

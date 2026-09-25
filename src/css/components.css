@@ -246,3 +246,28 @@
 .btn-secondary:hover {
     background: var(--card-border);
 }
+
+/* ============================================
+   v0.3.0 Components Updates
+   ============================================ */
+
+.setting-item select {
+    background: var(--input-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-sm);
+    color: var(--text);
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.setting-item select:focus {
+    border-color: var(--primary);
+}
+
+.setting-item select option {
+    background: #1a1a2e;
+    color: white;
+}

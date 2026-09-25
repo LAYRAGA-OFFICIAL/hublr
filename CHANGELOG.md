@@ -3,7 +3,33 @@
 Format: [Keep a Changelog](https://keepachangelog.com/)
 Versioning: [Semantic Versioning](https://semver.org/)
 
-## [0.2.0] - 2026-09-22
+
+## [0.3.0] - 2026-09-24
+
+### Added
+- 🎨 Wallpaper Manager (upload gambar/video/gradient/solid/URL)
+- ✨ Animasi Partikel (bintang, salju, hujan, gelembung)
+- 🖱️ Efek Cursor Trail
+- 🎨 Tema Warna (8 preset: indigo, emerald, rose, amber, violet, cyan, slate, red)
+- 🔍 Voice Search (Web Speech API)
+- 💡 Preview Hasil Pencarian (DuckDuckGo Instant Answer API)
+- 📱 Responsif Sempurna (mobile, tablet, desktop, landscape)
+- ✨ Animasi Search Bar (focus glow, scale)
+
+### Changed
+- Upgrade layout search bar dengan voice button
+- Update settings modal dengan section terpisah
+- Brand name pakai animated gradient
+- Logo burung hantu di header
+
+### Fixed
+- Bug di dom.js (koma hilang)
+- Bug di app.js (urutan init)
+- Bug di settings.js (I18n re-render)
+
+---
+
+## [0.2.0] - 2026-09-23
 
 ### Added
 - 📝 Notes module — catatan cepat

@@ -3,68 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="HUBLR — Powerful startpage by LAYRAGA OFFICIAL. Search, bookmark, notes, to-do, weather, all in one hub.">
+    <meta name="description" content="HUBLR — Powerful startpage by LAYRAGA OFFICIAL.">
     <meta name="theme-color" content="#6366f1">
     <title>HUBLR — LAYRAGA Hub</title>
-
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" href="src/assets/icons/logo.png">
     <link rel="apple-touch-icon" href="src/assets/icons/logo.png">
     <link rel="stylesheet" href="src/css/main.css">
 </head>
 <body>
-    <!-- Background -->
     <div id="wallpaper" class="wallpaper"></div>
     <div class="overlay"></div>
 
-    <!-- Main Container -->
     <main class="container">
-
-        <!-- ========== TOPBAR ========== -->
         <header class="topbar">
             <div class="brand">
                 <img src="src/assets/icons/logo.png" alt="HUBLR" class="brand-logo">
                 <span class="brand-name">HUBLR</span>
             </div>
             <div class="topbar-actions">
-                <button id="langToggle" class="icon-btn" title="Ganti Bahasa / Switch Language">
+                <button id="langToggle" class="icon-btn" title="Ganti Bahasa">
                     <span id="langLabel">ID</span>
                 </button>
-                <button id="themeToggle" class="icon-btn" title="Ganti Tema / Toggle Theme">
+                <button id="themeToggle" class="icon-btn" title="Ganti Tema">
                     <span id="themeIcon">🌙</span>
                 </button>
-                <button id="settingsBtn" class="icon-btn" title="Pengaturan / Settings">
+                <button id="settingsBtn" class="icon-btn" title="Pengaturan">
                     <span>⚙️</span>
                 </button>
             </div>
         </header>
 
-        <!-- ========== CLOCK ========== -->
         <section class="clock-section">
             <div id="clock" class="clock">00:00</div>
             <div id="date" class="date">Memuat...</div>
             <div id="greeting" class="greeting"></div>
         </section>
 
-        <!-- ========== SEARCH ========== -->
         <section class="search-section">
             <div class="search-wrapper">
-                <select id="engineSelect" class="engine-select" title="Mesin Pencari"></select>
-                <input
-                    type="text"
-                    id="searchInput"
-                    class="search-input"
-                    placeholder="Ketik untuk mencari... (Ctrl+K)"
-                    autocomplete="off"
-                    autofocus
-                >
+                <!-- Engine Picker (mobile) -->
+                <button id="enginePickerBtn" class="engine-picker-btn" title="Pilih Mesin Pencari" aria-label="Pilih Mesin Pencari">
+                    <span id="enginePickerIcon" class="engine-picker-icon">🌐</span>
+                    <span class="engine-picker-chevron">▾</span>
+                </button>
+
+                <!-- Engine Select (desktop) -->
+                <select id="engineSelect" class="engine-select"></select>
+
+                <input type="text" id="searchInput" class="search-input"
+                    placeholder="Ketik untuk mencari..." autocomplete="off" autofocus>
+
+                <button id="voiceBtn" class="voice-btn" title="Voice Search">🎤</button>
                 <button id="searchBtn" class="search-btn" title="Cari">🔍</button>
             </div>
+
+            <!-- Dropdown Engine -->
+            <div id="engineDropdown" class="engine-dropdown">
+                <div class="engine-dropdown-header">
+                    <span class="engine-dropdown-title">🌐 Pilih Mesin Pencari</span>
+                    <button id="engineDropdownClose" class="engine-dropdown-close" aria-label="Tutup">✕</button>
+                </div>
+                <div id="engineDropdownList" class="engine-dropdown-list"></div>
+            </div>
+
             <div id="suggestions" class="suggestions"></div>
+            <div id="searchPreview" class="search-preview"></div>
             <div id="calcResult" class="calc-result"></div>
         </section>
 
-        <!-- ========== BOOKMARKS ========== -->
         <section class="bookmarks-section">
             <div class="bookmarks-header">
                 <h2 id="bookmarksTitle">Bookmark</h2>
@@ -73,10 +80,7 @@
             <div id="bookmarksGrid" class="bookmarks-grid"></div>
         </section>
 
-        <!-- ========== DASHBOARD (v0.2.0) ========== -->
         <section id="dashboard" class="dashboard hidden">
-
-            <!-- Notes -->
             <div class="dash-card">
                 <div class="dash-header">
                     <span class="dash-title">📝 <span id="notesTitle">Catatan</span></span>
@@ -84,8 +88,6 @@
                 </div>
                 <div id="notesGrid" class="dash-content notes-grid"></div>
             </div>
-
-            <!-- To-do -->
             <div class="dash-card">
                 <div class="dash-header">
                     <span class="dash-title">✅ <span id="todoTitle">Tugas</span></span>
@@ -93,8 +95,6 @@
                 <input type="text" id="todoInput" class="todo-input" placeholder="Tambah tugas..." />
                 <div id="todoList" class="dash-content"></div>
             </div>
-
-            <!-- Weather -->
             <div class="dash-card">
                 <div class="dash-header">
                     <span class="dash-title">🌤️ <span id="weatherTitle">Cuaca</span></span>
@@ -102,8 +102,6 @@
                 </div>
                 <div id="weatherContent" class="dash-content"></div>
             </div>
-
-            <!-- Backup -->
             <div class="dash-card">
                 <div class="dash-header">
                     <span class="dash-title">📥 <span id="backupTitle">Backup</span></span>
@@ -119,20 +117,15 @@
                     <input type="file" id="importFile" accept=".json" style="display: none;">
                 </div>
             </div>
-
         </section>
 
-        <!-- ========== FOOTER ========== -->
         <footer class="footer">
-            <span id="footerText">HUBLR v0.2.0 — oleh LAYRAGA OFFICIAL</span>
+            <span id="footerText">HUBLR v0.3.2 — oleh LAYRAGA OFFICIAL</span>
         </footer>
-
     </main>
 
-    <!-- Dashboard Toggle Button -->
     <button id="dashboardToggle" class="dashboard-toggle-btn" title="Dashboard">📊</button>
 
-    <!-- ========== BOOKMARK MODAL ========== -->
     <div id="bookmarkModal" class="modal hidden">
         <div class="modal-content">
             <h3 id="modalTitle">Tambah Bookmark</h3>
@@ -145,27 +138,108 @@
         </div>
     </div>
 
-    <!-- ========== SETTINGS MODAL ========== -->
     <div id="settingsModal" class="modal hidden">
         <div class="modal-content">
             <h3 id="settingsTitle">Pengaturan</h3>
 
-            <div class="setting-item">
-                <label id="lblWallpaper">Wallpaper dari Unsplash</label>
-                <input type="checkbox" id="wallpaperToggle" checked>
+            <div class="setting-section">
+                <h4 class="setting-section-title">🎨 <span id="lblColorTitle">Warna Tema</span></h4>
+                <div class="color-swatches">
+                    <div class="color-swatch" data-color="indigo" style="background:#6366f1" title="Indigo"></div>
+                    <div class="color-swatch" data-color="emerald" style="background:#10b981" title="Emerald"></div>
+                    <div class="color-swatch" data-color="rose" style="background:#f43f5e" title="Rose"></div>
+                    <div class="color-swatch" data-color="amber" style="background:#f59e0b" title="Amber"></div>
+                    <div class="color-swatch" data-color="violet" style="background:#8b5cf6" title="Violet"></div>
+                    <div class="color-swatch" data-color="cyan" style="background:#06b6d4" title="Cyan"></div>
+                    <div class="color-swatch" data-color="slate" style="background:#64748b" title="Slate"></div>
+                    <div class="color-swatch" data-color="red" style="background:#ef4444" title="Red"></div>
+                </div>
             </div>
 
-            <div class="setting-item">
-                <label id="lblAnim">Animasi</label>
-                <input type="checkbox" id="animationToggle" checked>
+            <div class="setting-section">
+                <h4 class="setting-section-title">🖼️ <span id="lblWallpaperTitle">Wallpaper</span></h4>
+                <div class="setting-item">
+                    <label id="lblWallpaper">Wallpaper dari Unsplash</label>
+                    <input type="checkbox" id="wallpaperToggle" checked>
+                </div>
+                <div class="setting-item">
+                    <label id="lblWallpaperType">Tipe Wallpaper</label>
+                    <select id="wallpaperType">
+                        <option value="unsplash">Unsplash (Default)</option>
+                        <option value="image">Upload Gambar</option>
+                        <option value="video">Upload Video</option>
+                        <option value="url">URL Gambar</option>
+                        <option value="gradient">Gradient</option>
+                        <option value="solid">Warna Solid</option>
+                    </select>
+                </div>
+                <div id="wallpaper-unsplash" class="wallpaper-option hidden">
+                    <p style="font-size:0.85rem;color:var(--text-muted);">Wallpaper acak dari Unsplash.</p>
+                </div>
+                <div id="wallpaper-image" class="wallpaper-option hidden">
+                    <input type="file" id="wallpaperUpload" accept="image/*">
+                    <p style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">Gambar max 2MB</p>
+                </div>
+                <div id="wallpaper-video" class="wallpaper-option hidden">
+                    <input type="file" id="wallpaperUploadVideo" accept="video/mp4,video/webm">
+                    <p style="font-size:0.75rem;color:var(--text-muted);margin-top:4px;">MP4/WebM, max 5MB</p>
+                </div>
+                <div id="wallpaper-url" class="wallpaper-option hidden">
+                    <input type="url" id="wallpaperUrlInput" placeholder="https://example.com/image.jpg">
+                    <button id="wallpaperApplyUrl" class="btn btn-primary" style="width:100%;">Terapkan</button>
+                </div>
+                <div id="wallpaper-gradient" class="wallpaper-option hidden">
+                    <div class="gradient-pickers">
+                        <input type="color" id="gradientColor1" value="#6366f1">
+                        <input type="color" id="gradientColor2" value="#0ea5e9">
+                        <input type="number" id="gradientAngle" value="135" min="0" max="360">
+                    </div>
+                    <button id="wallpaperGradientApply" class="btn btn-primary" style="width:100%;">Terapkan</button>
+                </div>
+                <div id="wallpaper-solid" class="wallpaper-option hidden">
+                    <div class="gradient-pickers">
+                        <input type="color" id="solidColor" value="#0f0f1e">
+                    </div>
+                    <button id="wallpaperSolidApply" class="btn btn-primary" style="width:100%;">Terapkan</button>
+                </div>
+                <button id="wallpaperReset" class="btn btn-secondary" style="width:100%;margin-top:12px;">
+                    ♻️ Reset Wallpaper
+                </button>
             </div>
 
-            <div class="setting-item">
-                <label id="lblClock">Format Jam</label>
-                <select id="clockFormat">
-                    <option value="24">24 Jam</option>
-                    <option value="12">12 Jam (AM/PM)</option>
-                </select>
+            <div class="setting-section">
+                <h4 class="setting-section-title">✨ <span id="lblAnimTitle">Animasi</span></h4>
+                <div class="setting-item">
+                    <label id="lblAnim">Animasi Transisi</label>
+                    <input type="checkbox" id="animationToggle" checked>
+                </div>
+                <div class="setting-item">
+                    <label id="lblParticles">Partikel Background</label>
+                    <input type="checkbox" id="particleToggle">
+                </div>
+                <div class="particle-options">
+                    <select id="particleType">
+                        <option value="stars">⭐ Bintang</option>
+                        <option value="snow">❄️ Salju</option>
+                        <option value="rain">🌧️ Hujan</option>
+                        <option value="bubbles">🫧 Gelembung</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label id="lblCursor">Efek Cursor</label>
+                    <input type="checkbox" id="cursorToggle">
+                </div>
+            </div>
+
+            <div class="setting-section">
+                <h4 class="setting-section-title">⚙️ <span id="lblOtherTitle">Lainnya</span></h4>
+                <div class="setting-item">
+                    <label id="lblClock">Format Jam</label>
+                    <select id="clockFormat">
+                        <option value="24">24 Jam</option>
+                        <option value="12">12 Jam (AM/PM)</option>
+                    </select>
+                </div>
             </div>
 
             <div class="modal-actions">
@@ -174,27 +248,24 @@
         </div>
     </div>
 
-    <!-- ==================================================== -->
-    <!-- SCRIPTS — URUTAN WAJIB, JANGAN DIACAK!               -->
-    <!-- ==================================================== -->
+    <div id="wallpaperPreview" class="wallpaper-preview"></div>
 
-    <!-- 1. Core (config → storage → state → i18n) -->
     <script src="src/js/config.js"></script>
     <script src="src/js/core/storage.js"></script>
     <script src="src/js/core/state.js"></script>
     <script src="src/js/core/i18n.js"></script>
-
-    <!-- 2. Utils -->
     <script src="src/js/utils/dom.js"></script>
     <script src="src/js/utils/helpers.js"></script>
 
-    <!-- 3. Modules -->
     <script src="src/js/modules/clock.js"></script>
     <script src="src/js/modules/theme.js"></script>
-    <script src="src/js/modules/wallpaper.js"></script>
+    <script src="src/js/modules/theme-colors.js"></script>
+    <script src="src/js/modules/wallpaper-manager.js"></script>
+    <script src="src/js/modules/animations.js"></script>
     <script src="src/js/modules/calculator.js"></script>
     <script src="src/js/modules/autosuggest.js"></script>
     <script src="src/js/modules/search.js"></script>
+    <script src="src/js/modules/search-enhanced.js"></script>
     <script src="src/js/modules/bookmarks.js"></script>
     <script src="src/js/modules/notes.js"></script>
     <script src="src/js/modules/todo.js"></script>
@@ -203,8 +274,6 @@
     <script src="src/js/modules/dashboard.js"></script>
     <script src="src/js/modules/settings.js"></script>
 
-    <!-- 4. App Entry (WAJIB PALING AKHIR) -->
     <script src="src/js/app.js"></script>
-
 </body>
 </html>

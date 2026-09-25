@@ -1,5 +1,5 @@
-/* HUBLR Service Worker v0.2.0 */
-const CACHE = 'hublr-v0.2.0';
+/* HUBLR Service Worker v0.3.0 */
+const CACHE = 'hublr-v0.3.0';
 const ASSETS = [
     './',
     './index.html',
@@ -9,6 +9,8 @@ const ASSETS = [
     './src/css/layout.css',
     './src/css/components.css',
     './src/css/dashboard.css',
+    './src/css/animations.css',
+    './src/css/responsive.css',
     './src/css/utilities.css',
     './src/js/config.js',
     './src/js/app.js',
@@ -19,10 +21,13 @@ const ASSETS = [
     './src/js/utils/helpers.js',
     './src/js/modules/clock.js',
     './src/js/modules/theme.js',
-    './src/js/modules/wallpaper.js',
+    './src/js/modules/theme-colors.js',
+    './src/js/modules/wallpaper-manager.js',
+    './src/js/modules/animations.js',
     './src/js/modules/calculator.js',
     './src/js/modules/autosuggest.js',
     './src/js/modules/search.js',
+    './src/js/modules/search-enhanced.js',
     './src/js/modules/bookmarks.js',
     './src/js/modules/notes.js',
     './src/js/modules/todo.js',

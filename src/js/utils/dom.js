@@ -1,5 +1,5 @@
 /* ============================================
-   HUBLR - DOM Helpers
+   HUBLR - DOM Helpers v0.3.1
    ============================================ */
 
 const $ = (sel) => document.querySelector(sel);
@@ -74,5 +74,37 @@ const ELS = {
     backupDesc: $('#backupDesc'),
     exportBtn: $('#exportBtn'),
     importBtn: $('#importBtn'),
-    importFile: $('#importFile')
+    importFile: $('#importFile'),
+
+    // v0.3.0
+    voiceBtn: $('#voiceBtn'),
+    searchPreview: $('#searchPreview'),
+    wallpaperType: $('#wallpaperType'),
+    wallpaperUpload: $('#wallpaperUpload'),
+    wallpaperUploadVideo: $('#wallpaperUploadVideo'),
+    wallpaperUrlInput: $('#wallpaperUrlInput'),
+    wallpaperApplyUrl: $('#wallpaperApplyUrl'),
+    wallpaperGradientApply: $('#wallpaperGradientApply'),
+    wallpaperSolidApply: $('#wallpaperSolidApply'),
+    wallpaperReset: $('#wallpaperReset'),
+    gradientColor1: $('#gradientColor1'),
+    gradientColor2: $('#gradientColor2'),
+    gradientAngle: $('#gradientAngle'),
+    solidColor: $('#solidColor'),
+    particleToggle: $('#particleToggle'),
+    particleType: $('#particleType'),
+    cursorToggle: $('#cursorToggle'),
+    wallpaperPreview: $('#wallpaperPreview'),
+    lblColorTitle: $('#lblColorTitle'),
+    lblWallpaperTitle: $('#lblWallpaperTitle'),
+    lblWallpaperType: $('#lblWallpaperType'),
+    lblAnimTitle: $('#lblAnimTitle'),
+    lblParticles: $('#lblParticles'),
+    lblCursor: $('#lblCursor'),
+    lblOtherTitle: $('#lblOtherTitle'),
+
+    // v0.3.1
+    enginePickerBtn: $('#enginePickerBtn'),
+    enginePickerIcon: $('#enginePickerIcon'),
+    engineDropdown: $('#engineDropdown')
 };

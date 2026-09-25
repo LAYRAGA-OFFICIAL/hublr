@@ -1,10 +1,11 @@
 /* ============================================
-   HUBLR - Main CSS
-   Import semua stylesheet
+   HUBLR - Main CSS v0.3.0
    ============================================ */
 
 @import url('./base.css');
 @import url('./layout.css');
 @import url('./components.css');
 @import url('./dashboard.css');
+@import url('./animations.css');
+@import url('./responsive.css');
 @import url('./utilities.css');
