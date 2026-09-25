@@ -1,5 +1,5 @@
 /* ============================================
-   HUBLR - App Entry Point v0.3.1
+   HUBLR - App Entry Point v0.3.2
    ============================================ */
 
 const App = {
@@ -27,7 +27,7 @@ const App = {
             navigator.serviceWorker.register('./sw.js').catch(() => {});
         }
 
-        console.log('%c🌀 HUBLR v0.3.1', 'color:#6366f1;font-size:20px;font-weight:bold;');
+        console.log('%c🌀 HUBLR v0.3.2', 'color:#6366f1;font-size:20px;font-weight:bold;');
         console.log('%cby LAYRAGA OFFICIAL', 'color:#0ea5e9;font-size:12px;');
     },
 
@@ -63,13 +63,6 @@ const App = {
         setText(ELS.lblParticles, 'lblParticles');
         setText(ELS.lblCursor, 'lblCursor');
         setText(ELS.lblOtherTitle, 'lblOtherTitle');
-
-        // v0.3.1: sync engine picker icon
-        if (typeof Search !== 'undefined' && ELS.engineSelect) {
-            const engine = CONFIG.engines.find((e) => e.id === ELS.engineSelect.value);
-            const iconEl = $('#enginePickerIcon');
-            if (iconEl && engine) iconEl.textContent = engine.icon;
-        }
 
         if (typeof Bookmarks !== 'undefined' && Bookmarks.render) Bookmarks.render();
         if (typeof Notes !== 'undefined' && Notes.render) Notes.render();

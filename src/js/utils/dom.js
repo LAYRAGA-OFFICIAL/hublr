@@ -1,5 +1,5 @@
 /* ============================================
-   HUBLR - DOM Helpers v0.3.1
+   HUBLR - DOM Helpers v0.3.2
    ============================================ */
 
 const $ = (sel) => document.querySelector(sel);
@@ -103,8 +103,10 @@ const ELS = {
     lblCursor: $('#lblCursor'),
     lblOtherTitle: $('#lblOtherTitle'),
 
-    // v0.3.1
+    // v0.3.2
     enginePickerBtn: $('#enginePickerBtn'),
     enginePickerIcon: $('#enginePickerIcon'),
-    engineDropdown: $('#engineDropdown')
+    engineDropdown: $('#engineDropdown'),
+    engineDropdownList: $('#engineDropdownList'),
+    engineDropdownClose: $('#engineDropdownClose')
 };
